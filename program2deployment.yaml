@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: container1
+        image: <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-app:v1
+        ports:
+        - containerPort: 80
+      - name: container2
+        image: <other-image>
+        ports:
+        - containerPort: 80
