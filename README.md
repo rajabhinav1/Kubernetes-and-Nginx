@@ -2,7 +2,8 @@
 You need to have docker and Kubernetes in your system then you can proceed with configuring to deploy a single node of clusters.
 
 
-![image](https://github.com/rajabhinav1/Kubernetes-and-Nginx/assets/27865950/be003aea-a11c-46e4-84e8-c784f3ea2cbb)
+![image](https://github.com/rajabhinav1/Kubernetes-and-Nginx/assets/27865950/2a8c3f34-721c-4ffd-b607-f010615f18db)
+
 
 #For the program 1
 
