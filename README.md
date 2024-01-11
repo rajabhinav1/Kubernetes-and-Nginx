@@ -1,11 +1,8 @@
-![image](https://github.com/rajabhinav1/Kubernetes-and-Nginx/assets/27865950/272db89b-7d99-455d-a959-2283c4826c98)
 
-You need to have docker and kubernetes in your system then you can proceed with configuring to deploy a single node of clusters on your kubernetes instance.
-
-
+You need to have docker and Kubernetes in your system then you can proceed with configuring to deploy a single node of clusters on your Kubernetes instance.
 ![image](https://github.com/rajabhinav1/Kubernetes-and-Nginx/assets/27865950/be003aea-a11c-46e4-84e8-c784f3ea2cbb)
 
-For the program 1
+#For the program 1
 
 Create a file named Dockerfile with the following content:
 FROM nginx:latest
@@ -22,4 +19,34 @@ kubectl get hpa
 kubectl delete deployment nginx-deploymentDelete the HPA:
 kubectl delete hpa nginx-deployment
 
-For the program 2
+#For the program 2
+
+Configure using gibash
+
+# for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+ARCH=amd64
+PLATFORM=windows_$ARCH
+
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.zip"
+
+# (Optional) Verify checksum
+curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+
+unzip eksctl_$PLATFORM.zip -d $HOME/bin
+
+rm eksctl_$PLATFORM.zip
+
+eksctl create cluster --name my-cluster --version 1.18 --region us-west-2 --nodegroup-name my-nodes --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --managed
+
+docker build -t my-app:v1 .
+aws ecr create-repository --repository-name my-app
+$(aws ecr get-login --no-include-email --region us-west-2)
+docker tag my-app:v1 <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-app:v1
+docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-app:v1
+
+
+
+
+
+
+
