@@ -1,5 +1,7 @@
 
-You need to have docker and Kubernetes in your system then you can proceed with configuring to deploy a single node of clusters on your Kubernetes instance.
+You need to have docker and Kubernetes in your system then you can proceed with configuring to deploy a single node of clusters.
+
+
 ![image](https://github.com/rajabhinav1/Kubernetes-and-Nginx/assets/27865950/be003aea-a11c-46e4-84e8-c784f3ea2cbb)
 
 #For the program 1
@@ -43,6 +45,20 @@ aws ecr create-repository --repository-name my-app
 $(aws ecr get-login --no-include-email --region us-west-2)
 docker tag my-app:v1 <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-app:v1
 docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/my-app:v1
+
+
+kubectl apply -f deployment.yaml
+kubectl apply -f deployment2.yaml
+kubectl get svc
+kubectl scale deployment my-app --replicas=3
+kubectl delete -f deployment.yaml
+kubectl delete -f deployment2.yaml
+eksctl delete cluster --name my-cluster
+
+
+
+
+
 
 
 
