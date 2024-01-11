@@ -23,7 +23,7 @@ kubectl delete hpa nginx-deployment
 
 #For the program 2
 
-Configure using gibash
+Configure using gitbash
 
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 ARCH=amd64
